@@ -19,8 +19,7 @@ router.post('/user', async (req,res) => {
 
 router.put('/user', auth.authentication , async (req,res) => {
     const user =  req.body   
-    const updates = Object.keys(req.body)
-    // need to add code for allowed updates
+    const updates = Object.keys(req.body) 
     try{
         const dbuser = req.user
         updates.forEach((update) => dbuser[update]=req.body[update])

@@ -5,8 +5,7 @@ const User = require('../models/user')
 const router = new express.Router()
 const mongoose = require('mongoose') 
 
-router.post( '/department' ,
- //auth.authentication, auth.authorization, 
+router.post( '/department' , 
  async (req, res)=> {
     try{ 
         const department = new Department(req.body) 
@@ -21,12 +20,7 @@ router.post( '/department' ,
 
 router.get('/department/all' , auth.authentication, async (req, res)=> {
     try{  
-        const department = await Department.find() 
-        // const departmentresponse = []
-        // quiz.forEach((item)=> {
-        //     const {_id,name} = item
-        //     quizresponse.push({_id, name})
-        // }) 
+        const department = await Department.find()  
         res.status(200).send(department) 
     }
     catch(e){
@@ -56,9 +50,7 @@ router.get('/department/user/:id' , auth.authentication, async (req, res)=> {
 })
 
 //not in use
-router.put('/department/:id' ,
-// auth.authentication, auth.authorization, 
-async (req, res)=> {
+router.put('/department/:id' , async (req, res)=> {
     try {  
         const department = await Department.findByIdAndUpdate(req.params.id, req.body) 
         res.status(200).send(department)
